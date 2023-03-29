@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import User from "./components/User";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const userDetails = async () => {
+    const response = await axios.get("https://randomuser.me/api/");
+    setUser(response.data.results[0]);
+  };
+
+  useEffect(() => {
+    userDetails();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="card">
+        <div className="body">
+          {user ? <User userData={user} /> : <p>Loading user data...</p>}
+          <button onClick={userDetails}>Generate New Person</button>
+        </div>
+      </div>
     </div>
   );
 }
