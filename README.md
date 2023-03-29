@@ -7,7 +7,7 @@
 
 ## Live Demo
 
-- [Live Demo]()
+- [Live Demo](https://surajbasnet-developer.github.io/randomusers)
 
 # Show your support
 
