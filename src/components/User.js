@@ -4,7 +4,7 @@ import "../App.css";
 const User = ({ userData }) => {
   const {
     picture: { large: imageURL },
-    name: { first, last },
+    name: { first, last, title },
 
     location: { country },
   } = userData;
@@ -13,7 +13,7 @@ const User = ({ userData }) => {
     <div className="App">
       <img src={imageURL} alt={`${first} ${last}`} />
       <h2>
-        {first} {last}
+        {title} {first} {last}
       </h2>
       <p>{country}</p>
     </div>
